@@ -9,17 +9,20 @@
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <title>Number Tiem</title>
 </head>
-<body>
-    <div class="container">
+<body class="bg-dark">
+    <div class="container d-flex flex-column align-items-center justify-content-center bg-light">
+        <header class="mb-5">
+            <h1 class="text-center mt-4 mb-4">How many Dino Nuggies did I Eat?</h1>
+            <img class="img-fluid" src="static/img/dino_banner.jpg" alt="a picture depicting a tropical paradise filled with beautiful dino nuggies">
+        </header>
         <div class="row">
-            <div clas="col">
-                <h1>Nummy-T H I C C</h1>
-                <h2> {{ session['message'] }}</h2>
+            <div class="col" >
+                <h2 class="fs-1 text-center"> {{ session['message'] }}</h2>
                 <p>Number guessed: {{ session['guess'] }} </p>
-                <form action="/guess" method="post">
-                    <label for ="user_guess">What would you like to guess?</label>
-                    <input type="number" id="user_guess" name="guess">
-                    <input class="btn" type="submit">
+                <form class="" action="/guess" method="post">
+                    <label class="form-label" for ="user_guess">How many nuggies do you guess?</label>
+                    <input class="form-control mb-2" type="number" id="user_guess" name="guess">
+                    <input class="btn btn-primary" type="submit">
                 </form>
                 <h2> session data:</h2>
                 <ul> {% for key in session %} 
