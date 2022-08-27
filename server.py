@@ -14,6 +14,9 @@ def index():
         print('rand int generating....')
         session['rand_num'] = randint(1,100)
         print(session['rand_num'])
+    
+    if('message' not in session):
+        session['message'] = "Guess a number!"
 
     return render_template('index.html')
 
@@ -23,17 +26,22 @@ def guess():
     # put code here to submit a guess 
     session['guess'] = int(request.form['guess'])
 
-    if(session['guess'] != session['rand_num']):
-        print(f"guess again, hammy")
-        print(session['guess'])
+    if(session['guess'] < session['rand_num']):
+        session['message'] = "Too low"
         return redirect('/')
+
+    elif(session['guess'] > session['rand_num']):
+        session['message'] = "Too high"
+        return redirect('/')
+
     else: 
-        print('wooohooo you did it! gj gj gj gj gj gj')
-        # return redirect('/success')
-    return redirect('/')
+        session['message'] = "YOU DID IT!"
+        return render_template('victory.html')
 
-# @app.route('/success')
-
+@app.route('/destroy', methods=['GET'])
+def victory():
+        session.clear()
+        return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)

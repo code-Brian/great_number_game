@@ -12,15 +12,11 @@
 <body>
     <div class="container">
         <div class="row">
-            <div clas="col">
-                <h1>Nummy-T H I C C</h1>
+            <div clas="col">    
+                <h1>VICTORY</h1>
                 <h2> {{ session['message'] }}</h2>
-                <p>Number guessed: {{ session['guess'] }} </p>
-                <form action="/guess" method="post">
-                    <label for ="user_guess">What would you like to guess?</label>
-                    <input type="number" id="user_guess" name="guess">
-                    <input class="btn" type="submit">
-                </form>
+                <p><a class="btn btn-primary" href="/destroy">Play Again</a></p>
+
                 <h2> session data:</h2>
                 <ul> {% for key in session %} 
                         <li>{{ session[key] }}</li>
