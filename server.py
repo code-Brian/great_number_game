@@ -10,6 +10,7 @@ def index():
         session['guess'] = 0
     else: 
         print(f" The guess input was: {session['guess']}")
+
     if('rand_num' not in session):
         print('rand int generating....')
         session['rand_num'] = randint(1,100)
