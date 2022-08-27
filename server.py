@@ -8,8 +8,6 @@ app.secret_key = 'shh'
 def index():
     if('guess' not in session):
         session['guess'] = 0
-    else: 
-        print(f" The guess input was: {session['guess']}")
 
     if('rand_num' not in session):
         print('rand int generating....')
@@ -17,14 +15,19 @@ def index():
         print(session['rand_num'])
     
     if('message' not in session):
-        session['message'] = "Guess a number!"
+        session['message'] = "How many nuggies were eaten?"
+    
+    if('attempts' not in session):
+        session['attempts'] = 0
 
     return render_template('index.html')
 
 @app.route('/guess', methods=['POST'])
 def guess():
     print('hey, you guessed something!')
-    # put code here to submit a guess 
+
+    session['attempts'] += 1
+
     session['guess'] = int(request.form['guess'])
 
     if(session['guess'] < session['rand_num']):
